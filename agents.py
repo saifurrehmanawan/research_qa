@@ -178,7 +178,7 @@ class research_paper_qa:
     response = self.model.generate_content([sample_file, prompt])
 
     # Display the Markdown content
-    display(Markdown(response.text))
+    st.markdown(response.text)
 
   def del_file(self, filename):
     os.remove(filename)

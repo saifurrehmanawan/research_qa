@@ -16,7 +16,7 @@ def main():
     st.info("NCBC ASTRO LLAMA is an advanced chatbot designed to answer a wide range of astronomical questions efficiently based on YouTube podcasts, utilizing information from YouTube podcasts.")
 
     # User input for the question
-    user_question = st.text_input("Ask a question about astronomy:")
+    question = st.text_input("Ask a question about astronomy:")
 
     if st.button("Get Answer"):
       keywords_list = research_paper_qa.get_keywords(question)

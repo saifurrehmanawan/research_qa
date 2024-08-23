@@ -56,8 +56,12 @@ class research_paper_qa:
       '''
 
     response = self.model.generate_content(query)
-    return ast.literal_eval(response.text)
-
+    # Convert the response text to a Python list
+    response_list = ast.literal_eval(response.text)
+    # Ensure elements in the list are properly quoted
+    response_list = [element.replace("'", "\\'") for element in response_list]
+    return response_list
+    
   def fetch_arxiv_papers(self, keywords):
     # Define the arXiv API query URL
     base_url = 'http://export.arxiv.org/api/query?'

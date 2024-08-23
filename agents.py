@@ -20,7 +20,7 @@ from langchain_community.vectorstores import FAISS, Chroma
 from langchain_community.vectorstores.utils import DistanceStrategy
 
 import google.generativeai as genai
-from IPython.display import Markdown
+from IPython.display import display, Markdown
 
 import urllib # Import urllib to use url encoding function
 

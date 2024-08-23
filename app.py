@@ -19,14 +19,14 @@ def main():
     user_question = st.text_input("Ask a question about astronomy:")
 
     if st.button("Get Answer"):
-      keywords_list = qa.get_keywords(question)
-      df = qa.fetch_arxiv_papers(keywords_list)
-      vector_database = qa.ret_docs(df)
-      doc = qa.retrieve(question, vector_database)
-      title = qa.title_extract(str(doc))
-      filename = qa.download_arxiv_paper(title)
-      qa.rp_qa(question, filename, title)
-      del_file(filename)
+      keywords_list = research_paper_qa.get_keywords(question)
+      df = research_paper_qa.fetch_arxiv_papers(keywords_list)
+      vector_database = research_paper_qa.ret_docs(df)
+      doc = research_paper_qa.retrieve(question, vector_database)
+      title = research_paper_qa.title_extract(str(doc))
+      filename = research_paper_qa.download_arxiv_paper(title)
+      research_paper_qa.rp_qa(question, filename, title)
+      research_paper_qa.del_file(filename)
 
 if __name__ == "__main__":
     main()

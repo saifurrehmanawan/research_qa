@@ -46,14 +46,22 @@ def main():
             unsafe_allow_html=True
         )
         doc = research_paper_qa.retrieve(question, vector_database)
-        title = research_paper_qa.title_extract(str(doc))
+        titles = []
+        for paper in doc:
+          #print("paper: ", paper)
+          title = research_paper_qa.title_extract(str(doc))
+          print(title)
+          titles.append(title)
     
         # Styled message for downloading
         st.markdown(
             '<p style="font-family:Courier; color:blue; font-size:20px;">Downloading...</p>',
             unsafe_allow_html=True
         )
+        filenames = []
+        for title in titles:
         filename = research_paper_qa.download_arxiv_paper(title)
+          filenames.append(filename)
     
         # Styled message for answering
         st.markdown(
@@ -62,10 +70,10 @@ def main():
         )
 
         # Display the answer
-        research_paper_qa.rp_qa(question, filename, title)
+        research_paper_qa.rp_qa(question, filenames, title)
     
         # Clean up
-        research_paper_qa.del_file(filename)
+        research_paper_qa.del_file(filenames)
 
 if __name__ == "__main__":
     main()

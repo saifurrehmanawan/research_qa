@@ -165,6 +165,7 @@ class research_paper_qa:
     print("No paper found with that title.")
 
   def rp_qa(self, question, filenames, title):
+    st.write(filenames)
     # List to store uploaded file information
     uploaded_files = []
 
@@ -184,7 +185,7 @@ class research_paper_qa:
         print("All files were successfully uploaded.")
     else:
         print(f"Some files failed to upload. Expected {len(filenames)}, but uploaded {len(uploaded_files)}.")
-    st.write(uploaded_files)
+      
     # Prompt the model with text and the previously uploaded image.
     prompt = f"""Answer the question: {question} based solely on the provided research paper (PDF).
               Begin with background information to set the context, and then provide a detailed answer including relevant evidence, equations, and explanations as found in the paper.
@@ -195,7 +196,7 @@ class research_paper_qa:
               """
 
     # Pass each uploaded file and the prompt as separate elements in the list
-    response = model.generate_content(uploaded_files + [prompt]) 
+    response = self.model.generate_content(uploaded_files + [prompt]) 
 
     # Display the Markdown content
     st.markdown(response.text)

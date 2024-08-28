@@ -184,17 +184,18 @@ class research_paper_qa:
         print("All files were successfully uploaded.")
     else:
         print(f"Some files failed to upload. Expected {len(filenames)}, but uploaded {len(uploaded_files)}.")
-
+    st.write(uploaded_files)
     # Prompt the model with text and the previously uploaded image.
-    prompt = f"""Answer the question: {question} based solely on the provided research paper (PDF). 
-              Begin with background information to set the context, and then provide a detailed answer including relevant evidence, equations, and explanations as found in the paper. 
-              Ensure that the response is thorough and directly references the content of the research paper. 
-              The answer should be in markdown.
+    prompt = f"""Answer the question: {question} based solely on the provided research paper (PDF).
+              Begin with background information to set the context, and then provide a detailed answer including relevant evidence, equations, and explanations as found in the paper.
+              Ensure that the response is thorough and directly references the content of the research paper.
+              The answer should be in markdown well formated.
               Always refer the reseach paper with the title.
               The answer must be quesiton oriented.
               """
+
     # Pass each uploaded file and the prompt as separate elements in the list
-    response = self.model.generate_content(uploaded_files + [prompt]) 
+    response = model.generate_content(uploaded_files + [prompt]) 
 
     # Display the Markdown content
     st.markdown(response.text)

@@ -52,6 +52,7 @@ def main():
           title = research_paper_qa.title_extract(str(doc))
           print(title)
           titles.append(title)
+          st.write(title)
     
         # Styled message for downloading
         st.markdown(
@@ -62,7 +63,6 @@ def main():
         for title in titles:
           st.write(title)
           filename = research_paper_qa.download_arxiv_paper(title)
-          st.write(filename)
           filenames.append(filename)
     
         # Styled message for answering

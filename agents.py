@@ -51,7 +51,7 @@ class research_paper_qa:
 
         you must make the python list without any aditional text or explanation.
 
-        the response must not be in the markdown format
+        Please Note that the response must not be in the markdown format.
 
       '''
 

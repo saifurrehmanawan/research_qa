@@ -194,7 +194,7 @@ class research_paper_qa:
               The answer must be quesiton oriented.
               """
     # Pass each uploaded file and the prompt as separate elements in the list
-    response = model.generate_content(uploaded_files + [prompt]) 
+    response = self.model.generate_content(uploaded_files + [prompt]) 
 
     # Display the Markdown content
     st.markdown(response.text)

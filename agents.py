@@ -130,7 +130,7 @@ class research_paper_qa:
     #docs = retriever.get_relevant_documents(query)
     config = {"configurable": {"search_kwargs_faiss": {"k": 5}, "search_kwargs_bm25": 5}}
     retrieved_docs = vector_database.invoke(query, config=config)
-    return retrieved_docs[0]
+    return retrieved_docs[:3]
 
   def title_extract(self, doc):
     # Extract the page content
@@ -165,11 +165,25 @@ class research_paper_qa:
     print("No paper found with that title.")
 
   def rp_qa(self, question, filename, title):
-    # Upload the file and print a confirmation
-    sample_file = genai.upload_file(path=filename,
-                                display_name=title)
+    # List to store uploaded file information
+    uploaded_files = []
 
-    print(f"Uploaded file '{sample_file.display_name}' as: {sample_file.uri}")
+    # Upload each file and print confirmation
+    for filename in filenames:
+        # Assuming 'title' should be a unique identifier for each file; you may want to adjust this
+        display_name = filename  # You could use just the file name or any other descriptive string
+        try:
+            sample_file = genai.upload_file(path=filename, display_name=display_name)
+            uploaded_files.append(sample_file)
+            print(f"Uploaded file '{sample_file.display_name}' as: {sample_file.uri}")
+        except Exception as e:
+            print(f"Failed to upload file '{filename}': {str(e)}")
+
+    # Verify all files were uploaded
+    if len(uploaded_files) == len(filenames):
+        print("All files were successfully uploaded.")
+    else:
+        print(f"Some files failed to upload. Expected {len(filenames)}, but uploaded {len(uploaded_files)}.")
 
     # Prompt the model with text and the previously uploaded image.
     prompt = f"""Answer the question: {question} based solely on the provided research paper (PDF). 
@@ -179,10 +193,12 @@ class research_paper_qa:
               Always refer the reseach paper with the title.
               The answer must be quesiton oriented.
               """
-    response = self.model.generate_content([sample_file, prompt])
+    # Pass each uploaded file and the prompt as separate elements in the list
+    response = model.generate_content(uploaded_files + [prompt]) 
 
     # Display the Markdown content
     st.markdown(response.text)
 
-  def del_file(self, filename):
-    os.remove(filename)
+  def del_file(self, filenames):
+    for filename in filenames:
+      os.remove(filename)

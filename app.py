@@ -49,10 +49,9 @@ def main():
         titles = []
         for paper in doc:
           #print("paper: ", paper)
-          title = research_paper_qa.title_extract(str(doc))
+          title = research_paper_qa.title_extract(str(paper))
           print(title)
           titles.append(title)
-          st.write(title)
     
         # Styled message for downloading
         st.markdown(

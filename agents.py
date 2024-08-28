@@ -164,7 +164,7 @@ class research_paper_qa:
     
     print("No paper found with that title.")
 
-  def rp_qa(self, question, filename, title):
+  def rp_qa(self, question, filenames, title):
     # List to store uploaded file information
     uploaded_files = []
 

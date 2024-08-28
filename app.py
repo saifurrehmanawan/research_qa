@@ -60,9 +60,9 @@ def main():
         )
         filenames = []
         for title in titles:
-            st.write(title)
+          st.write(title)
           filename = research_paper_qa.download_arxiv_paper(title)
-            st.write(filename)
+          st.write(filename)
           filenames.append(filename)
     
         # Styled message for answering

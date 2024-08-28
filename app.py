@@ -60,7 +60,7 @@ def main():
         )
         filenames = []
         for title in titles:
-        filename = research_paper_qa.download_arxiv_paper(title)
+          filename = research_paper_qa.download_arxiv_paper(title)
           filenames.append(filename)
     
         # Styled message for answering

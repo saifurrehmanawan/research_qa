@@ -37,6 +37,7 @@ class research_paper_qa:
         Based on the question "{question}", please provide a concise list of relevant search queries that can be used to find related papers on arXiv.
         You must make the Python list without any additional text or explanation.
         The response must not be in the markdown format.
+        please do not start with "```python".
       '''
 
     response = self.model.generate_content(query)

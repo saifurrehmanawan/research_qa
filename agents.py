@@ -32,15 +32,16 @@ class research_paper_qa:
   def __init__(self):
     self.model = genai.GenerativeModel('gemini-1.5-flash')
     self.embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-  def get_keywords(self, question):
+  def get_search_queries(self, question):
     query = f'''
-        Based on the question "{question}", please provide a concise list of relevant search queries or keywords that can be used to find related papers on arXiv.
-        you must make the python list without any aditional text or explanation.
-        the response must not be in the markdown format
+        Based on the question "{question}", please provide a concise list of relevant search queries that can be used to find related papers on arXiv.
+        You must make the Python list without any additional text or explanation.
+        The response must not be in the markdown format.
       '''
 
     response = self.model.generate_content(query)
     return ast.literal_eval(response.text)
+
 
     # Convert the response text to a Python list
     response_list = ast.literal_eval(response.text)

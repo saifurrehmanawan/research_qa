@@ -14,6 +14,8 @@ def main():
     question = st.text_input("Ask a question about astronomy:")
 
     if st.button("Get Answer"):
+        question = research_paper_qa.refine_question(question)
+        st.write(question)
         st.markdown(
             '<p style="font-family:Courier; color:blue; font-size:20px;">Extracting keywords...</p>',
             unsafe_allow_html=True

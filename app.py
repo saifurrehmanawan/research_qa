@@ -18,14 +18,14 @@ def main():
             '<p style="font-family:Courier; color:blue; font-size:20px;">Extracting keywords...</p>',
             unsafe_allow_html=True
         )
-        keywords_list = research_paper_qa.get_keywords(question)
+        queries_list = research_paper_qa.get_search_queries(question)
 
         # Styled message for fetching arxiv papers
         st.markdown(
             '<p style="font-family:Courier; color:blue; font-size:20px;">Fetching arxiv papers...</p>',
             unsafe_allow_html=True
         )
-        df = research_paper_qa.fetch_arxiv_papers(keywords_list)
+        df = research_paper_qa.fetch_arxiv_papers(queries_list)
 
         # Styled message for creating vector database
         st.markdown(

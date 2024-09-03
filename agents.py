@@ -141,10 +141,13 @@ class research_paper_qa:
                                 display_name=title)
     print(f"Uploaded file '{sample_file.display_name}' as: {sample_file.uri}")
     # Prompt the model with text and the previously uploaded image.
-    prompt = f"""Answer the question: {question} based solely on the provided research paper (PDF).
-             Do not refer to the paper or author directly. Instead, present the information in a generic and authoritative manner.
-             Craft a thorough and polished response, including all necessary details such as tables and equations, without any explicit references to the source document.
-             The answer should be in markdown.
+    prompt = f"""
+              Answer the question: {question} using general knowledge and established scientific principles.
+
+              Present the information clearly and in a manner that is easy to understand. Avoid mentioning any specific papers, theories, or technical terms that might be unfamiliar to the user. Instead, provide a comprehensive and straightforward explanation, including necessary details such as key concepts, methods, and equations, if applicable.
+
+              Ensure the response is formatted in markdown and is suitable for users with a basic understanding of the topic.
+
              """
 
     response = self.model.generate_content([sample_file, prompt])

@@ -142,7 +142,6 @@ class research_paper_qa:
     print(f"Uploaded file '{sample_file.display_name}' as: {sample_file.uri}")
     # Prompt the model with text and the previously uploaded image.
     prompt = f"""Answer the question: {question} based solely on the provided research paper (PDF).
-             Begin with background information to set the context, and then provide a detailed, well-supported answer using relevant evidence, equations, and explanations from the paper.
              Do not refer to the paper or author directly. Instead, present the information in a generic and authoritative manner.
              Craft a thorough and polished response, including all necessary details such as tables and equations, without any explicit references to the source document.
              The answer should be in markdown.

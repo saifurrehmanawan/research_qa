@@ -1,20 +1,15 @@
 import streamlit as st
 from agents import research_paper_qa
-
 @st.cache(allow_output_mutation=True)
 def load_agent():
     return research_paper_qa()
-
 # Initialize the AI agent
 research_paper_qa = load_agent()
-
 def main():
     # Add logo at the top
     #st.image("logo.png", width=100)
-
     st.title("Arxiv Q&A Assistant")
     st.info("The Arxiv Q&A Assistant is an AI-driven tool designed to answer user questions by searching and extracting relevant information from research papers on arXiv. By leveraging advanced natural language processing techniques, this program allows users to interact with academic research more effectively, providing concise and accurate answers to their queries based on the latest scientific literature. Ideal for researchers, students, and academics, it simplifies the process of finding precise information within a vast array of research documents.")
-
     # User input for the question
     question = st.text_input("Ask a question about astronomy:")
 

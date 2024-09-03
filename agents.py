@@ -143,10 +143,9 @@ class research_paper_qa:
     # Prompt the model with text and the previously uploaded image.
     prompt = f"""Answer the question: {question} based solely on the provided research paper (PDF). 
               Begin with background information to set the context, and then provide a detailed answer including relevant evidence, equations, and explanations as found in the paper. 
-              Ensure that the response is thorough and directly references the content of the research paper. 
+              Respond to the question directly without mentioning the paper or author.
+              Artfully compose a comprehensive answer, including all relevant details such as tables and equations if necessary.
               The answer should be in markdown.
-              Always refer the reseach paper with the title.
-              The answer must be quesiton oriented.
               """
     response = self.model.generate_content([sample_file, prompt])
     # Display the Markdown content

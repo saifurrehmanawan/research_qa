@@ -20,7 +20,7 @@ def main():
             '<p style="font-family:Courier; color:blue; font-size:20px;">Extracting keywords...</p>',
             unsafe_allow_html=True
         )
-        queries_list = research_paper_qa.get_search_queries(question)
+        queries_list = research_paper_qa.get_search_queries(question.text)
 
         # Styled message for fetching arxiv papers
         st.markdown(

@@ -148,6 +148,10 @@ class research_paper_qa:
 
               Ensure the response is formatted in markdown and is suitable for users with a basic understanding of the topic.
 
+              You must response to the question without mentions the paper as "this paper, this study and etc".
+
+              Imagine you are a chatbot specialized in addressing complex, research-based questions.
+
              """
 
     response = self.model.generate_content([sample_file, prompt])

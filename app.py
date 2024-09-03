@@ -50,6 +50,7 @@ def main():
             unsafe_allow_html=True
         )
         filename = research_paper_qa.download_arxiv_paper(title)
+        st.write(filename)
 
         # Styled message for answering
         st.markdown(

@@ -40,7 +40,7 @@ class research_paper_qa:
       '''
 
     response = self.model.generate_content(query)
-    return response
+    return response.text
   
   def get_search_queries(self, question):
     query = f'''

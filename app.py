@@ -14,21 +14,6 @@ def main():
     question = st.text_input("Ask a question about astronomy:")
 
     if st.button("Get Answer"):
-        st.write('Extracting keywords...')
-        keywords_list = research_paper_qa.get_keywords(question)
-        st.write('Fetching arxiv papers...')
-        df = research_paper_qa.fetch_arxiv_papers(keywords_list)
-        st.write('Creating vector database...')
-        vector_database = research_paper_qa.ret_docs(df)
-        st.write('Retrieving relevant arxiv paper...')
-        doc = research_paper_qa.retrieve(question, vector_database)
-        title = research_paper_qa.title_extract(str(doc))
-        st.write('Downloading...')
-        filename = research_paper_qa.download_arxiv_paper(title)
-        st.write('Answering...')
-        research_paper_qa.rp_qa(question, filename, title)
-        research_paper_qa.del_file(filename)
-        # Styled message for extracting keywords
         st.markdown(
             '<p style="font-family:Courier; color:blue; font-size:20px;">Extracting keywords...</p>',
             unsafe_allow_html=True

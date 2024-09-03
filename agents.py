@@ -142,7 +142,7 @@ class research_paper_qa:
     print(f"Uploaded file '{sample_file.display_name}' as: {sample_file.uri}")
     # Prompt the model with text and the previously uploaded image.
     prompt = f"""
-              Answer the question: {question} using general knowledge and established scientific principles.
+              Answer the question: {question} using general knowledge and established scientific principles from the provided research paper (PDF)..
 
               Present the information clearly and in a manner that is easy to understand. Avoid mentioning any specific papers, theories, or technical terms that might be unfamiliar to the user. Instead, provide a comprehensive and straightforward explanation, including necessary details such as key concepts, methods, and equations, if applicable.
 

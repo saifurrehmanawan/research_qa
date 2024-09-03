@@ -32,6 +32,16 @@ class research_paper_qa:
   def __init__(self):
     self.model = genai.GenerativeModel('gemini-1.5-flash')
     self.embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
+    def refine_question(self, question):
+    query = f'''
+        Based on the question "{question}", please refine it into a research-style question.
+        Only return the question without any additional text.
+      '''
+
+    response = self.model.generate_content(query)
+    return response
+  
   def get_search_queries(self, question):
     query = f'''
         Based on the question "{question}", please provide a concise list of relevant search queries that can be used to find related papers on arXiv.

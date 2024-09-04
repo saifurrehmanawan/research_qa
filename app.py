@@ -36,30 +36,39 @@ def main():
         )
         vector_database = research_paper_qa.ret_docs(df)
 
-        # Styled message for retrieving relevant arxiv paper
-        st.markdown(
-            '<p style="font-family:Courier; color:blue; font-size:20px;">Retrieving relevant arxiv paper...</p>',
-            unsafe_allow_html=True
-        )
-        doc = research_paper_qa.retrieve(question, vector_database)
-        title = research_paper_qa.title_extract(str(doc))
+        for i in range(5):
+            # Styled message for retrieving relevant arxiv paper
+            st.markdown(
+                '<p style="font-family:Courier; color:blue; font-size:20px;">Retrieving relevant arxiv paper...</p>',
+                unsafe_allow_html=True
+            )
+            doc = research_paper_qa.retrieve(question, vector_database, i)
+            title = research_paper_qa.title_extract(str(doc))
 
-        # Styled message for downloading
-        st.markdown(
-            '<p style="font-family:Courier; color:blue; font-size:20px;">Downloading...</p>',
-            unsafe_allow_html=True
-        )
-        filename = research_paper_qa.download_arxiv_paper(title)
-        st.write(filename)
+            # Styled message for downloading
+            st.markdown(
+                '<p style="font-family:Courier; color:blue; font-size:20px;">Downloading...</p>',
+                unsafe_allow_html=True
+            )
+            filename = research_paper_qa.download_arxiv_paper(title)
+            st.write(filename)
 
-        # Styled message for answering
+            
+            response = research_paper_qa.rp_qa(question, filename, title)
+            if response != 'NO':
+                break
+
+            elif response == 'NO':
+                # Clean up
+                research_paper_qa.del_file(filename)
+            # Styled message for answering
         st.markdown(
             '<p style="font-family:Courier; color:blue; font-size:20px;">Answering...</p>',
             unsafe_allow_html=True
-        )
+            )
 
-        # Display the answer
-        research_paper_qa.rp_qa(question, filename, title)
+        # Display the Markdown content
+        st.markdown(response)
 
         # Clean up
         research_paper_qa.del_file(filename)

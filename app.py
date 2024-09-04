@@ -61,17 +61,22 @@ def main():
             elif response.strip() == 'NO':
                 # Clean up
                 research_paper_qa.del_file(filename)
+
+        if response.strip() == 'NO':
+            st.write("I apologize for not being able to provide a satisfactory answer to your query. Your question is important, and I regret that I couldn't assist you this time. Please feel free to ask another question, and I'll do my utmost to provide the information you need.")
+
+        else:
             # Styled message for answering
-        st.markdown(
-            '<p style="font-family:Courier; color:blue; font-size:20px;">Answering...</p>',
-            unsafe_allow_html=True
-            )
+            st.markdown(
+                '<p style="font-family:Courier; color:blue; font-size:20px;">Answering...</p>',
+                unsafe_allow_html=True
+                )
 
-        # Display the Markdown content
-        st.markdown(response)
+            # Display the Markdown content
+            st.markdown(response)
 
-        # Clean up
-        research_paper_qa.del_file(filename)
+            # Clean up
+            research_paper_qa.del_file(filename)
 
 if __name__ == "__main__":
     main()

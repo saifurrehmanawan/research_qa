@@ -111,12 +111,12 @@ class research_paper_qa:
       retrievers=[bm25_retriever, faiss_retriever], weights=[0.5, 0.5] # You can adjust the weight of each retriever in the EnsembleRetriever
     )
     return vector_database
-  def retrieve(self, query, vector_database):
+  def retrieve(self, query, vector_database, i):
     # Retrieve top k similar documents to query
     #docs = retriever.get_relevant_documents(query)
     config = {"configurable": {"search_kwargs_faiss": {"k": 5}, "search_kwargs_bm25": 5}}
     retrieved_docs = vector_database.invoke(query, config=config)
-    return retrieved_docs[0]
+    return retrieved_docs[i]
   def title_extract(self, doc):
     # Extract the page content
     start = doc.find("page_content='") + len("page_content='")

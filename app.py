@@ -55,10 +55,10 @@ def main():
 
             
             response = research_paper_qa.rp_qa(question, filename, title)
-            if response != 'NO':
+            if response.strip() != 'NO':
                 break
 
-            elif response == 'NO':
+            elif response.strip() == 'NO':
                 # Clean up
                 research_paper_qa.del_file(filename)
             # Styled message for answering

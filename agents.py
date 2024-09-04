@@ -164,6 +164,8 @@ class research_paper_qa:
 
               Imagine you are a chatbot specialized in addressing complex, research-based questions.
 
+              When paper does not contain the answer, only return the "NO" without any additional text.
+
              """
 
     response = self.model.generate_content([sample_file, prompt])

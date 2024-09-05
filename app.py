@@ -59,7 +59,7 @@ def main():
             if (response.strip() != 'NO') or (not re.findall(r'\bNO\b', text)):
                 break
 
-            elif (response.strip() == 'NO') or (re.findall(r'\bNO\b', text))::
+            elif (response.strip() == 'NO') or (re.findall(r'\bNO\b', text)):
                 # Clean up
                 research_paper_qa.del_file(filename)
 

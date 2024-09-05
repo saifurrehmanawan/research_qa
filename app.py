@@ -56,14 +56,14 @@ def main():
 
             
             response = research_paper_qa.rp_qa(question, filename, title)
-            if (response.strip() != 'NO') or (not re.findall(r'\bNO\b', text)):
+            if (response.strip() != 'NO') or (not re.findall(r'\bNO\b', response)):
                 break
 
-            elif (response.strip() == 'NO') or (re.findall(r'\bNO\b', text)):
+            elif (response.strip() == 'NO') or (re.findall(r'\bNO\b', response)):
                 # Clean up
                 research_paper_qa.del_file(filename)
 
-        if (response.strip() == 'NO') or (re.findall(r'\bNO\b', text)):
+        if (response.strip() == 'NO') or (re.findall(r'\bNO\b', response)):
             st.write("I apologize for not being able to provide a satisfactory answer to your query. Your question is important, and I regret that I couldn't assist you this time. Please feel free to ask another question, and I'll do my utmost to provide the information you need.")
 
         else:

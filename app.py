@@ -63,7 +63,7 @@ def main():
                 # Clean up
                 research_paper_qa.del_file(filename)
 
-        if (response.strip() != 'NO') or (re.findall(r'\bNO\b', text))::
+        if (response.strip() != 'NO') or (re.findall(r'\bNO\b', text)):
             st.write("I apologize for not being able to provide a satisfactory answer to your query. Your question is important, and I regret that I couldn't assist you this time. Please feel free to ask another question, and I'll do my utmost to provide the information you need.")
 
         else:

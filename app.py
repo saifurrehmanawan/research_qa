@@ -1,4 +1,5 @@
 import streamlit as st
+import re
 from agents import research_paper_qa
 @st.cache(allow_output_mutation=True)
 def load_agent():
@@ -55,14 +56,14 @@ def main():
 
             
             response = research_paper_qa.rp_qa(question, filename, title)
-            if response.strip() != 'NO':
+            if (response.strip() != 'NO') or (not re.findall(r'\bNO\b', text)):
                 break
 
-            elif response.strip() == 'NO':
+            elif if (response.strip() == 'NO') or (re.findall(r'\bNO\b', text))::
                 # Clean up
                 research_paper_qa.del_file(filename)
 
-        if response.strip() == 'NO':
+        if if (response.strip() != 'NO') or (re.findall(r'\bNO\b', text))::
             st.write("I apologize for not being able to provide a satisfactory answer to your query. Your question is important, and I regret that I couldn't assist you this time. Please feel free to ask another question, and I'll do my utmost to provide the information you need.")
 
         else:

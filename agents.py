@@ -152,7 +152,7 @@ class research_paper_qa:
     print(f"Uploaded file '{sample_file.display_name}' as: {sample_file.uri}")
     # Prompt the model with text and the previously uploaded image.
     prompt = f"""
-You are a sophisticated AI trained to assist with academic research. Given a specific research paper, your task is to provide precise and contextually relevant responses to queries about its content. You will have access to the full text of the paper and will use Retrieval-Augmented Generation (RAG) techniques to generate your answers.
+You are a sophisticated AI trained to assist with academic research. Given a specific research paper {title}, your task is to provide precise and contextually relevant responses to queries {question} about its content. You will have access to the full text of the paper and will use Retrieval-Augmented Generation (RAG) techniques to generate your answers.
 
 **Instructions:**
 
@@ -171,10 +171,6 @@ You are a sophisticated AI trained to assist with academic research. Given a spe
 
 **Document Access:**
 You have access to the full text of the research paper titled [Title of the Paper]. Utilize this document to find the most accurate and relevant information for generating your responses.
-
----
-
-Feel free to adjust the details according to the specifics of your research paper or the capabilities of your RAG model.
 
 
              """

@@ -36,7 +36,6 @@ class research_paper_qa:
   def refine_question(self, question):
     query = f'''
         Based on the question "{question}", please refine it into a research-style question if required otherwise return the same question as it is.
-        If there is any reference in the question, only return the title of the paper without any text.
         Only return the question without any additional text.
       '''
 
@@ -168,11 +167,6 @@ You are a sophisticated AI trained to assist with academic research. Given a spe
 5. Always refer the paper with its title {title}.
 
 6. If the paper does not contain the relative information, please only return the 'NO'.
-
-**Example Queries:**
-1. "What are the main findings of the paper regarding the impact of X on Y?"
-2. "Can you explain the methodology used in this research?"
-3. "What are the limitations of the study as discussed in the paper?"
 
 **Document Access:**
 You have access to the full text of the research paper titled {title}. Utilize this document to find the most accurate and relevant information for generating your responses.

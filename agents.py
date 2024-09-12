@@ -167,6 +167,8 @@ You are a sophisticated AI trained to assist with academic research. Given a spe
 
 5. Always refer the paper with its title {title}.
 
+6. If the paper does not contain the relative information, please only return the 'NO'.
+
 **Example Queries:**
 1. "What are the main findings of the paper regarding the impact of X on Y?"
 2. "Can you explain the methodology used in this research?"

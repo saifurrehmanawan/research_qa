@@ -56,6 +56,7 @@ def main():
 
             
             response = research_paper_qa.rp_qa(question, filename, title)
+            st.write(response)
             if (response.strip() != 'NO') or (not re.findall(r'\bNO\b', response)):
                 break
 

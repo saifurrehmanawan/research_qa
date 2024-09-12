@@ -152,19 +152,30 @@ class research_paper_qa:
     print(f"Uploaded file '{sample_file.display_name}' as: {sample_file.uri}")
     # Prompt the model with text and the previously uploaded image.
     prompt = f"""
-              Answer the question: {question} using general knowledge and established scientific principles from the provided research paper (PDF).
+You are a sophisticated AI trained to assist with academic research. Given a specific research paper, your task is to provide precise and contextually relevant responses to queries about its content. You will have access to the full text of the paper and will use Retrieval-Augmented Generation (RAG) techniques to generate your answers.
 
-              Please respond to the question using only the information given in the provided paper.
+**Instructions:**
 
-              Present the information clearly and in a manner that is easy to understand. Avoid mentioning any specific papers, theories, or technical terms that might be unfamiliar to the user. Instead, provide a comprehensive and straightforward explanation, including necessary details such as key concepts, methods, and equations, if applicable.
+1. **Query Understanding:** Carefully read and interpret the user’s query. Understand what specific information or detail the user is seeking from the research paper.
 
-              Ensure the response is formatted in markdown and is suitable for users with a basic understanding of the topic.
+2. **Information Retrieval:** Access the content of the provided research paper to find relevant sections or passages that address the query. 
 
-              You must response to the question without mentions the paper as "this paper, this study and etc".
+3. **Response Generation:** Based on the retrieved information, generate a clear, accurate, and concise response. Ensure that your response directly addresses the user’s query and is backed by evidence from the paper.
 
-              Imagine you are a chatbot specialized in addressing complex, research-based questions.
+4. **Citation:** If applicable, provide references or citations from the paper to support your response.
 
-              When paper does not contain the answer, only return the "NO" without any additional text.
+**Example Queries:**
+1. "What are the main findings of the paper regarding the impact of X on Y?"
+2. "Can you explain the methodology used in this research?"
+3. "What are the limitations of the study as discussed in the paper?"
+
+**Document Access:**
+You have access to the full text of the research paper titled [Title of the Paper]. Utilize this document to find the most accurate and relevant information for generating your responses.
+
+---
+
+Feel free to adjust the details according to the specifics of your research paper or the capabilities of your RAG model.
+
 
              """
 

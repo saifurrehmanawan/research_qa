@@ -72,7 +72,7 @@ class research_paper_qa:
     st.write(filename)
     response = self.rp_qa(question, filename, title)
 
-    if response == "NO101":
+    if response.strip() == "NO101":
       alter_(question)
 
     else:

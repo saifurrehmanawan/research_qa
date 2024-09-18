@@ -37,48 +37,40 @@ def main():
         )
         vector_database = research_paper_qa.ret_docs(df)
 
-        for i in range(5):
-            # Styled message for retrieving relevant arxiv paper
-            st.markdown(
-                '<p style="font-family:Courier; color:blue; font-size:20px;">Retrieving relevant arxiv paper...</p>',
-                unsafe_allow_html=True
-            )
-            doc = research_paper_qa.retrieve(question, vector_database, i)
-            title = research_paper_qa.title_extract(str(doc))
+        # Styled message for retrieving relevant arxiv paper
+        st.markdown(
+            '<p style="font-family:Courier; color:blue; font-size:20px;">Retrieving relevant arxiv paper...</p>',
+            unsafe_allow_html=True
+        )
+        doc = research_paper_qa.retrieve(question, vector_database, i)
+        title = research_paper_qa.title_extract(str(doc))
 
-            # Styled message for downloading
-            st.markdown(
-                '<p style="font-family:Courier; color:blue; font-size:20px;">Downloading...</p>',
-                unsafe_allow_html=True
-            )
-            filename = research_paper_qa.download_arxiv_paper(title)
-            st.write(filename)
+        # Styled message for downloading
+        st.markdown(
+            '<p style="font-family:Courier; color:blue; font-size:20px;">Downloading...</p>',
+            unsafe_allow_html=True
+        )
+        filename = research_paper_qa.download_arxiv_paper(title)
+        st.write(filename)
 
             
-            response = research_paper_qa.rp_qa(question, filename, title)
-            st.write(response)
-            if (response.strip() != 'NO101') or (not re.findall(r'\bNO101\b', response)):
-                break
+        response = research_paper_qa.rp_qa(question, filename, title)
 
-            elif (response.strip() == 'NO101') or (re.findall(r'\bNO101\b', response)):
-                # Clean up
-                research_paper_qa.del_file(filename)
+        #if (response.strip() == 'NO101') or (re.findall(r'\bNO101\b', response)):
+            #st.write("I apologize for not being able to provide a satisfactory answer to your query. Your question is important, and I regret that I couldn't assist you this time. Please feel free to ask another question, and I'll do my utmost to provide the information you need.")
 
-        if (response.strip() == 'NO101') or (re.findall(r'\bNO101\b', response)):
-            st.write("I apologize for not being able to provide a satisfactory answer to your query. Your question is important, and I regret that I couldn't assist you this time. Please feel free to ask another question, and I'll do my utmost to provide the information you need.")
+        #else:
+        # Styled message for answering
+        st.markdown(
+            '<p style="font-family:Courier; color:blue; font-size:20px;">Answering...</p>',
+            unsafe_allow_html=True
+            )
 
-        else:
-            # Styled message for answering
-            st.markdown(
-                '<p style="font-family:Courier; color:blue; font-size:20px;">Answering...</p>',
-                unsafe_allow_html=True
-                )
+        # Display the Markdown content
+        st.markdown(response)
 
-            # Display the Markdown content
-            st.markdown(response)
-
-            # Clean up
-            research_paper_qa.del_file(filename)
+        # Clean up
+        research_paper_qa.del_file(filename)
 
 if __name__ == "__main__":
     main()

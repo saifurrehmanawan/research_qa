@@ -65,7 +65,7 @@ class research_paper_qa:
     st.write(question)
     queries_list = self.get_search_queries(question)
     df = self.fetch_arxiv_papers(queries_list)
-    vector_database = research_paper_qa.ret_docs(df)
+    vector_database = self.ret_docs(df)
     doc = self.retrieve(question, vector_database)
     title = self.title_extract(str(doc))
     filename = self.download_arxiv_paper(title)

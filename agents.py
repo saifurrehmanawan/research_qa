@@ -117,13 +117,8 @@ class research_paper_qa:
     config = {"configurable": {"search_kwargs_faiss": {"k": 5}, "search_kwargs_bm25": 5}}
     
     # Retrieve documents along with their scores
-    retrieved_docs_with_scores = vector_database.invoke(query, config=config)
-    
-    # Access the ith retrieved document and its score
-    doc = retrieved_docs_with_scores[i].page_content  # Access the content of the document
-    score = retrieved_docs_with_scores[i].metadata.get('score', None)  # Access the score if available in metadata
-    
-    return doc, score
+    retrieved_docs = vector_database.invoke(query, config=config)
+    return retrieved_docs[i]
     
   def title_extract(self, doc):
     # Extract the page content

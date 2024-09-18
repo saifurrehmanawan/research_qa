@@ -112,13 +112,13 @@ class research_paper_qa:
     )
     return vector_database
 
-  def retrieve(self, query, vector_database, i):
+  def retrieve(self, query, vector_database):
     # Configurable search kwargs for both BM25 and FAISS
     config = {"configurable": {"search_kwargs_faiss": {"k": 5}, "search_kwargs_bm25": 5}}
     
     # Retrieve documents along with their scores
     retrieved_docs = vector_database.invoke(query, config=config)
-    return retrieved_docs[i]
+    return retrieved_docs[0]
     
   def title_extract(self, doc):
     # Extract the page content

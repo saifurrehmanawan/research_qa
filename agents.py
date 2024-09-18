@@ -66,7 +66,7 @@ class research_paper_qa:
       '''
 
     response = self.model.generate_content(query)
-    return ast.literal_eval(response.text)
+    return response.text
 
   def fetch_arxiv_papers(self, keywords):
     # Define the arXiv API query URL

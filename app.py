@@ -42,7 +42,7 @@ def main():
             '<p style="font-family:Courier; color:blue; font-size:20px;">Retrieving relevant arxiv paper...</p>',
             unsafe_allow_html=True
         )
-        doc = research_paper_qa.retrieve(question, vector_database, i)
+        doc = research_paper_qa.retrieve(question, vector_database)
         title = research_paper_qa.title_extract(str(doc))
 
         # Styled message for downloading

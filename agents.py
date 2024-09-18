@@ -62,7 +62,7 @@ class research_paper_qa:
 
   def fail_(self, question):
     query = f'''
-        Please apologize that the system was unable to answer your query {question}. This could be because the question may not be research-oriented. To help guide the user, provide 2 or 3 example research-type questions that are related to the original question {question}.
+        Please apologize that the system was unable to answer your query {question}. This could be because the question may not be research-oriented. To help guide the user, provide 1 example research-type questions that are related to the original question {question}.
       '''
 
     response = self.model.generate_content(query)

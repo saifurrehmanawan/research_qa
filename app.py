@@ -53,16 +53,30 @@ def main():
         filename = research_paper_qa.download_arxiv_paper(title)
         st.write(filename)
 
-            
         response = research_paper_qa.rp_qa(question, filename, title)
 
-        # Styled message for refining
-        st.markdown(
-            '<p style="font-family:Courier; color:blue; font-size:20px;">refining...</p>',
-            unsafe_allow_html=True
-        )
 
-        if response == "NO101":
+
+        if response != "NO101":
+            # Styled message for answering
+            st.markdown(
+                '<p style="font-family:Courier; color:blue; font-size:20px;">Answering...</p>',
+                unsafe_allow_html=True
+                )
+
+            # Display the Markdown content
+            st.markdown(response)
+
+            # Clean up
+            research_paper_qa.del_file(filename)
+
+        elif response == "NO101":
+            # Styled message for refining
+            st.markdown(
+                '<p style="font-family:Courier; color:blue; font-size:20px;">refining...</p>',
+                unsafe_allow_html=True
+            )
+            
             response = research_paper_qa.alter_(question)
         
             # Styled message for answering

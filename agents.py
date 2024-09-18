@@ -60,7 +60,7 @@ class research_paper_qa:
     response_list = [element.replace("'", "\\'") for element in response_list]
     return response_list
 
-  def alter_(question):
+  def alter_(self, question):
     question = self.refine_question(question)
     st.write(question)
     queries_list = research_paper_qa.get_search_queries(question)

@@ -56,6 +56,12 @@ def main():
             
         response = research_paper_qa.rp_qa(question, filename, title)
 
+        # Styled message for refining
+        st.markdown(
+            '<p style="font-family:Courier; color:blue; font-size:20px;">refining...</p>',
+            unsafe_allow_html=True
+        )
+
         if response == "NO101":
             response = research_paper_qa.alter_(question)
         

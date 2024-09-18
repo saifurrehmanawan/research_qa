@@ -75,7 +75,8 @@ class research_paper_qa:
     if response == "NO101":
       alter_(question)
 
-    else response
+    else:
+      response
 
   def fetch_arxiv_papers(self, keywords):
     # Define the arXiv API query URL

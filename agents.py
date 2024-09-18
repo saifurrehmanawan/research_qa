@@ -120,8 +120,8 @@ class research_paper_qa:
     retrieved_docs_with_scores = vector_database.invoke(query, config=config)
     
     # Access the ith retrieved document and its score
-    doc = retrieved_docs_with_scores[i].document  # Retrieved document
-    score = retrieved_docs_with_scores[i].score  # Corresponding score
+    doc = retrieved_docs_with_scores[i].page_content  # Access the content of the document
+    score = retrieved_docs_with_scores[i].metadata.get('score', None)  # Access the score if available in metadata
     
     return doc, score
     

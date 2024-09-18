@@ -60,23 +60,13 @@ class research_paper_qa:
     response_list = [element.replace("'", "\\'") for element in response_list]
     return response_list
 
-  def alter_(self, question):
-    question = self.refine_question(question)
-    st.write(question)
-    queries_list = self.get_search_queries(question)
-    df = self.fetch_arxiv_papers(queries_list)
-    vector_database = self.ret_docs(df)
-    doc = self.retrieve(question, vector_database)
-    title = self.title_extract(str(doc))
-    filename = self.download_arxiv_paper(title)
-    st.write(filename)
-    response = self.rp_qa(question, filename, title)
+  def fail_(self, question):
+    query = f'''
+        Please apologize that the system was unable to answer your query {question}. This could be because the question may not be research-oriented. To help guide the user, provide 2 or 3 example research-type questions that are related to the original question {question}.
+      '''
 
-    if response.strip() == "NO101":
-      self.alter_(question)
-
-    else:
-      response
+    response = self.model.generate_content(query)
+    return ast.literal_eval(response.text)
 
   def fetch_arxiv_papers(self, keywords):
     # Define the arXiv API query URL

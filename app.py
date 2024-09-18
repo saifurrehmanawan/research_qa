@@ -70,27 +70,6 @@ def main():
             # Clean up
             research_paper_qa.del_file(filename)
 
-        elif response.strip() == "NO101":
-            # Styled message for refining
-            st.markdown(
-                '<p style="font-family:Courier; color:blue; font-size:20px;">refining...</p>',
-                unsafe_allow_html=True
-            )
-            
-            response = research_paper_qa.alter_(question)
-        
-            # Styled message for answering
-            st.markdown(
-                '<p style="font-family:Courier; color:blue; font-size:20px;">Answering...</p>',
-                unsafe_allow_html=True
-                )
-
-            # Display the Markdown content
-            st.markdown(response)
-
-            # Clean up
-            research_paper_qa.del_file(filename)
-
         else:
             st.write("I apologize for not being able to provide a satisfactory answer to your query. Your question is important, and I regret that I couldn't assist you this time. Please feel free to ask another question, and I'll do my utmost to provide the information you need.")
 

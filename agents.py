@@ -35,7 +35,7 @@ class research_paper_qa:
 
   def refine_question(self, question):
     query = f'''
-        Based on the question "{question}", please refine it into a research-style question if required otherwise return the same question as it is.
+        Please write the question {question} with other words.
         Only return the question without any additional text.
       '''
 

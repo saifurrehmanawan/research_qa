@@ -71,7 +71,8 @@ def main():
             research_paper_qa.del_file(filename)
 
         else:
-            st.write("I apologize for not being able to provide a satisfactory answer to your query. Your question is important, and I regret that I couldn't assist you this time. Please feel free to ask another question, and I'll do my utmost to provide the information you need.")
+            response = fail_(question)
+            st.write(response)
 
 if __name__ == "__main__":
     main()

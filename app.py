@@ -56,6 +56,11 @@ def main():
             
         response = research_paper_qa.rp_qa(question, filename, title)
 
+        if response == "NO101":
+            response = research_paper_qa.alter_(question)
+        
+            
+
         #if (response.strip() == 'NO101') or (re.findall(r'\bNO101\b', response)):
             #st.write("I apologize for not being able to provide a satisfactory answer to your query. Your question is important, and I regret that I couldn't assist you this time. Please feel free to ask another question, and I'll do my utmost to provide the information you need.")
 

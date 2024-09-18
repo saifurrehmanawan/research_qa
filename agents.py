@@ -60,6 +60,23 @@ class research_paper_qa:
     response_list = [element.replace("'", "\\'") for element in response_list]
     return response_list
 
+  def alter_(question):
+    question = self.refine_question(question)
+    st.write(question)
+    queries_list = research_paper_qa.get_search_queries(question)
+    df = research_paper_qa.fetch_arxiv_papers(queries_list)
+    vector_database = research_paper_qa.ret_docs(df)
+    doc = self.retrieve(question, vector_database)
+    title = self.title_extract(str(doc))
+    filename = self.download_arxiv_paper(title)
+    st.write(filename)
+    response = self.rp_qa(question, filename, title)
+
+    if response == "NO101":
+      alter_(question)
+
+    else response
+
   def fetch_arxiv_papers(self, keywords):
     # Define the arXiv API query URL
     base_url = 'http://export.arxiv.org/api/query?'

@@ -57,7 +57,7 @@ def main():
 
 
 
-        if response != "NO101":
+        if response.strip() != "NO101":
             st.write("response:  ", response)
             # Styled message for answering
             st.markdown(
@@ -71,7 +71,7 @@ def main():
             # Clean up
             research_paper_qa.del_file(filename)
 
-        elif response == "NO101":
+        elif response.strip() == "NO101":
             # Styled message for refining
             st.markdown(
                 '<p style="font-family:Courier; color:blue; font-size:20px;">refining...</p>',

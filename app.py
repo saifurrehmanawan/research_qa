@@ -58,6 +58,7 @@ def main():
 
 
         if response != "NO101":
+            st.write("response:  ", response)
             # Styled message for answering
             st.markdown(
                 '<p style="font-family:Courier; color:blue; font-size:20px;">Answering...</p>',

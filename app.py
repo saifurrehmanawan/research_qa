@@ -71,7 +71,7 @@ def main():
             research_paper_qa.del_file(filename)
 
         else:
-            response = fail_(question)
+            response = research_paper_qa.fail_(question)
             st.write(response)
 
 if __name__ == "__main__":

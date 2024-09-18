@@ -115,8 +115,11 @@ class research_paper_qa:
     # Retrieve top k similar documents to query
     #docs = retriever.get_relevant_documents(query)
     config = {"configurable": {"search_kwargs_faiss": {"k": 5}, "search_kwargs_bm25": 5}}
-    retrieved_docs = vector_database.invoke(query, config=config)
-    return retrieved_docs[i]
+    
+    # Access the ith retrieved document and its score
+    retrieved_docs = retrieved_docs_with_scores.document  # Retrieved document
+    score = retrieved_docs_with_scores.score  # Corresponding score
+    return retrieved_docs[i], score[i]
     
   def title_extract(self, doc):
     # Extract the page content

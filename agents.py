@@ -63,7 +63,7 @@ class research_paper_qa:
   def alter_(self, question):
     question = self.refine_question(question)
     st.write(question)
-    queries_list = research_paper_qa.get_search_queries(question)
+    queries_list = self.get_search_queries(question)
     df = research_paper_qa.fetch_arxiv_papers(queries_list)
     vector_database = research_paper_qa.ret_docs(df)
     doc = self.retrieve(question, vector_database)

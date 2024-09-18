@@ -73,7 +73,7 @@ class research_paper_qa:
     response = self.rp_qa(question, filename, title)
 
     if response.strip() == "NO101":
-      alter_(question)
+      self.alter_(question)
 
     else:
       response

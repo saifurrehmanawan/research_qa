@@ -1,4 +1,4 @@
-.import streamlit as st
+import streamlit as st
 import ast
 import pandas as pd
 import feedparser
